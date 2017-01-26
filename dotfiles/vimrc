@@ -89,11 +89,13 @@ set expandtab
 
 filetype plugin on
 filetype plugin indent on
-"au BufNewFile,BufRead *.isml set filetype=html
 
 " ============== Syntax Highliht ====================
-au BufReadPost *.isml set syntax=html
-au BufReadPost *.ds set syntax=js
+au BufRead *.isml set ft=isml
+au BufRead *.ds set ft=javascript
+
+"au BufReadPost *.isml set syntax=html
+"au BufReadPost *.ds set syntax=js
 
 " ================== Colors =========================
 set background=dark
