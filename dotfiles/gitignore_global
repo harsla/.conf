@@ -20,7 +20,13 @@ code/cartridges/app_petsmart_core/cartridge/static/default/js/app.js
 code/cartridges/bm_integrationframework/cartridges.zip
 code/cartridges/app_cssuite/cartridges.zip
 code/cartridges/int_QAS/cartridges.zip
+code/cartridges/zz_test
 dev32.iml
 webdav.rb
 dw.json
 vim/backups/
+*.orig
+DigitalServer*/
+*.tern-project
+.editorconfig
+.jscsrc

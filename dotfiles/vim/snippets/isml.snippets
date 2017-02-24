@@ -1,0 +1,128 @@
+extends html
+
+# isactivedatacontext
+snippet isactivedatacontext
+	<isactivedatacontext category="${1}" />
+
+# isactivedatahead
+snippet isactivedatahead
+	<isactivedatahead />
+	
+# isanalyticsoff
+snippet isanalyticsoff
+	<isanalyticsoff />
+
+# isbreak
+snippet isbreak
+	<isbreak />
+
+# iscache
+snippet iscache
+	<iscache
+	  type="${1}relative"
+	  minute="${2}30"
+	  varyby="${3}price_promotion"
+	/>
+
+# iscomment
+snippet iscomment
+	<iscomment>
+	  ${1}
+	</iscomment>${0}
+
+
+# iscomponent
+snippet iscomponent
+	<iscomponent
+	  pipeline="${1}The-Pipline"
+	  locale="${2}locale_name"
+	/>
+
+
+# iscontent
+snippet iscontent
+	<iscontent type="text/html" charset="UTF-8" compact="true" />
+
+# iscontinue
+snippet iscontinue
+	<iscontinue />
+
+
+# iscookie
+snippet iscookie
+	<iscookie
+	  name="cookie_name" //req
+	  value="cookie_value" //req
+	  comment="cookie_use"
+	  domain="domain_name"
+	  path="pathname"
+	  maxAge="cookie_lifetime"
+	  version="cookie_spec"
+	  secure="on" | "off"
+	/>
+
+
+# isdecorate
+snippet isdecorate
+	<isdecorate template="${1}"></isdecorate>${0}
+
+
+# isif
+snippet isif
+	<isif condition="${1}">
+	</isif>${0}
+
+
+# iselse
+snippet iselse
+	<isif condition="${1}">
+	  <iselse>
+	  </iselse>
+	</isif>${0}
+
+
+# iselseif
+snippet iselse
+	<isif condition="${1}">
+		
+		<iselseif condition="${2}"> 
+	  </iselseif>
+		
+		<iselse>
+	  </iselse>
+	</isif>
+
+
+# isinclude
+snippet isinclude
+	<isinclude template="${0}path/to/template" />
+
+#isloop
+snippet isloop
+	<isloop iterator="${1}" alias="${0}">
+	</isloop>
+
+
+#ismodule
+snippet ismodule
+	<ismodule
+	  template="${1}path/to/template.isml"
+		name="${2}"
+		attribute="${3}"
+	/>
+
+#isnext
+snippet isnext
+	<isnext />
+	
+#isobject
+snippet isobject
+	<isobject
+	  object="${1}"
+	  view="${0}"
+	</isobject>
+
+
+#isprint
+snippet isprint
+	<isprint value="${1}" encoding="off" />${0}

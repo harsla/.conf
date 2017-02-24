@@ -16,20 +16,36 @@ Plug 'othree/javascript-libraries-syntax.vim'
 Plug 'scrooloose/syntastic'
 Plug 'scrooloose/nerdtree'
 Plug 'scrooloose/nerdcommenter'
-Plug 'SirVer/ultisnips'
-Plug 'honza/vim-snippets'
-Plug 'tpope/vim-surround'
+Plug 'airblade/vim-gitgutter'
+Plug 'nathanaelkane/vim-indent-guides'
+"Plug 'tpope/vim-surround'
 Plug 'chrisgillis/vim-bootstrap3-snippets'
 Plug 'matthewsimo/angular-vim-snippets'
 Plug 'digitaltoad/vim-jade'
-Plug 'terryma/vim-multiple-cursors'
+"Plug 'terryma/vim-multiple-cursors'
 Plug 'ryanss/vim-hackernews'
 Plug 'rking/ag.vim'
+Plug 'powerline/powerline'
+Plug 'MarcWeber/vim-addon-mw-utils' "snipmate dep
+Plug 'tomtom/tlib_vim' "snipmate dep
+Plug 'garbas/vim-snipmate'
 
 call plug#end()
 
 " ================ Enable mouse clicks ==============
 set mouse=a
+
+" =================== Shortcuts =====================
+" Quick quit
+nmap <Leader>q :q<CR>
+
+" I said SUDO!!
+cmap w!! w !sudo tee > /dev/null %
+
+" ======================= tabs ======================
+nmap <C-T> :tabe<CR>
+nmap <tab> :tabnext<CR>
+nmap <S-tab> :tabprevious<CR>
 
 " ================== Autoexpansion ==================
 
@@ -54,12 +70,24 @@ if executable('ag')
   set grepprg=ag\ --nogroup\ --nocolor
 endif
 
+" find in project
+nmap <Leader>f :grep -F 
+
 " bind F (Shift-F) to grep shortcut
 command -nargs=+ -complete=file -bar Ag silent! grep! <args>|cwindow|redraw!
 nnoremap F :Ag<SPACE>
 
 nnoremap <Space><Space> :'{,'}s/\<<C-r>=expand('<cword>')<CR>\>/
 nnoremap <Space>%       :%s/\<<C-r>=expand('<cword>')<CR>\>/
+
+" highlight searches
+set incsearch
+set ignorecase
+set smartcase
+set hlsearch
+
+" double-tab leader to clear search highlight
+nmap <Leader>\ :nohlsearch<CR>
 
 " ================ Enable spell checking ============
 "set spell spelllang=en_us
@@ -94,11 +122,23 @@ filetype plugin indent on
 au BufRead *.isml set ft=isml
 au BufRead *.ds set ft=javascript
 
-"au BufReadPost *.isml set syntax=html
-"au BufReadPost *.ds set syntax=js
+au BufNewFile,BufRead *.isml set filetype=isml
+au BufNewFile,BufRead *.ds set filetype=javascript
+
+au BufReadPost *.isml set syntax=html
+au BufReadPost *.ds set syntax=js
+
+" ================= Copy / Paste ======================
+
+" Leader-key (Backslash) y while in visual mode (SHIFT-V or CTRL-V)
+ vmap <leader>y y:new<CR>:call setline(1,getregtype())<CR>o<Esc>P:wq! ~/vim-clipboard.txt<CR>
+" Leader-key (Backslash) p in normal mode (ESC to get out of visual mode)
+ map <leader>p :sview ~/vim-clipboard.txt<CR>"zdddG:q!<CR>:call setreg('"',@", @z)<CR>p
 
 " ================== Colors =========================
 set background=dark
+set t_Co=256 " Make sure your terminal is 256 colors too!
+let g:Powerline_symbols = 'fancy'
 
 " ================ Line Numbers =====================
 set number
@@ -156,9 +196,3 @@ map <C-d> :NERDTreeToggle<CR>
 let g:NERDTreeDirArrows = 0
 :let g:NERDTreeWinSize=60
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-
-" Utilisnips
-" Trigger configuration. Do not use <tab> if you use https://github.com/Valloric/YouCompleteMe.
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
