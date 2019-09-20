@@ -48,12 +48,18 @@ ZSH_THEME="babun"
 plugins=(git)
 
 # User configuration
+# export MANPATH="/usr/local/man:$MANPATH"
 
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 export PATH=~/.local/bin:$PATH
 export PATH=/opt/DataGrip-2018.1.5/bin:$PATH
 export PATH=/opt/WebStorm-181.5281.31/bin:$PATH
-# export MANPATH="/usr/local/man:$MANPATH"
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/Code/Simpixl
+export PATH=$GOPATH/bin:$GOROOT/bin:$PATH
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 source $ZSH/oh-my-zsh.sh
 
@@ -83,7 +89,15 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
  alias vp="vagrant provision"
  alias vd="vagrant destroy --force"
+ alias vdvu="vagrant destroy --force && vagrant up"
  alias vu="vagrant up"
+ alias kevin="sh /home/scott/Code/Synlio/scripts/trigger.sh"
+ alias music="mpv ~/Music/* --shuffle --gapless-audio"
 
+ markdown () { pandoc "$1" | lynx -stdin; }
 
 #source /usr/local/lib/dnx/bin/dnvm.sh
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
