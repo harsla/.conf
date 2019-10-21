@@ -92,6 +92,9 @@ source $ZSH/oh-my-zsh.sh
  alias vu="vagrant up"
  alias kevin="sh /home/scott/Code/Synlio/scripts/trigger.sh"
  alias music="mpv ~/Music/* --shuffle --gapless-audio"
+ alias pink="play -n synth 8:00:00 pinknoise"
+ alias brown="play -n synth 8:00:00 brownnoise"
+ alias white="play -n synth 8:00:00 whitenoise"
 
  markdown () { pandoc "$1" | lynx -stdin; }
 
